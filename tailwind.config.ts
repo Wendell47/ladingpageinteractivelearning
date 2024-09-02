@@ -9,9 +9,13 @@ const config: Config = {
   theme: {
     extend: {
       backgroundImage: {
+        'hero-pattern': "url('/bg-hero.png')",
         "gradient-radial": "radial-gradient(var(--tw-gradient-stops))",
         "gradient-conic":
           "conic-gradient(from 180deg at 50% 50%, var(--tw-gradient-stops))",
+      },
+      fontSize:{
+        'h1Clamp': 'clamp(2rem,5vw,6rem)',
       },
     },
   },

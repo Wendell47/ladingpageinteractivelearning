@@ -8,24 +8,26 @@
   --background-end-rgb: 255, 255, 255;
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --foreground-rgb: 255, 255, 255;
-    --background-start-rgb: 0, 0, 0;
-    --background-end-rgb: 0, 0, 0;
-  }
+*{
+  font-weight: 500;
+  box-sizing: border-box;
 }
 
-body {
-  color: rgb(var(--foreground-rgb));
-  background: linear-gradient(
-      to bottom,
-      transparent,
-      rgb(var(--background-end-rgb))
-    )
-    rgb(var(--background-start-rgb));
+p+p{
+  margin-top:1rem;
 }
 
+p{
+  color: rgb(24, 24, 24);
+  line-height: 2rem;
+}
+h1{
+  font-size: 2.4rem;
+  font-weight: 600;
+}
+h2+h2{
+  margin-top: 2rem;
+}
 @layer utilities {
   .text-balance {
     text-wrap: balance;
