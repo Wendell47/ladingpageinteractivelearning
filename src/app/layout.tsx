@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import { Quicksand } from "next/font/google";
 import "./globals.css";
 import Header from "./components/Header";
+import { SpeedInsights } from "@vercel/speed-insights/next"
 
 const inter = Quicksand({ subsets: ["latin"] });
 
@@ -20,6 +21,7 @@ export default function RootLayout({
       <body className={inter.className}>
       <Header/>
         {children}
+        <SpeedInsights/>
       </body>
       
     </html>
