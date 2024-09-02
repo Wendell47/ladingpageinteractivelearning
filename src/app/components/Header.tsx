@@ -44,13 +44,13 @@ export default function Header(){
 
  
     return(
-        <header className={`z-10 fixed top-0 inset-x-0 py-4 border-b border-black/5  transition-all ${scrolled && "backdrop-blur-2xl bg-white/80"}`}>
+        <header className={`z-10 fixed top-0 inset-x-0 py-4 border-b border-black/5  transition-all ${scrolled && "backdrop-blur-2xl bg-white/90"}`}>
           <Container>
             <div className="flex justify-between items-center">
             <div>
                 <Logo/>
             </div>
-            <nav>
+            <nav className="max-md:hidden">
                 <ul className="flex gap-6 [&>li]:text-lg">
                     {
                         Menu.map((item,index) => <li key={index}><Link className="font-bold tracking-widest " href={item.url}>{item.name}</Link></li>)

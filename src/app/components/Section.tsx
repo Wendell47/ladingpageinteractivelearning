@@ -1,7 +1,6 @@
 import { ReactNode } from "react";
 import Container from "./container";
-import Subtitle from "./subtitle";
-import { props } from "../utils/props/props";
+
 
 type SectionProps ={
     children:ReactNode,
@@ -15,7 +14,7 @@ export default function Section({children,className}:SectionProps){
     return(
         <Container>
 
-            <div className={`flex [&>div]:flex-1 flex-wrap gap-4 py-52 ${className}`}>
+            <div className={`flex [&>div]:flex-1 max-lg:flex-col items-center flex-wrap gap-4  py-40 max-lg:[&>*]:text-center ${className}`}>
                    
                     {children}
             </div>

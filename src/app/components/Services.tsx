@@ -27,7 +27,7 @@ const Icon = ({value}:{value?:number})=>{
     }
 }
 const ServiceCard = ({title,description,value}:serviceCardProps)=>(
-    <div className="p-4 bg-neutral-800 rounded-lg  [&>p]:text-white/60 flex-1 relative flex flex-col">
+    <div className="p-4 bg-neutral-800 rounded-lg  [&>p]:text-white/60 flex-1 relative flex max-lg:items-center flex-col">
         <div className="p-3 bg-white inline-flex rounded-full  -mt-10 absolute"><Icon value={value}/></div>
         <Title className="text-white uppercase text-sm mt-6" type="h3">{title}</Title>
         <p className="text-sm flex-1">{description}</p>
@@ -37,7 +37,7 @@ const ServiceCard = ({title,description,value}:serviceCardProps)=>(
 export default function Services(){
 
     return(
-        <div className="flex flex-wrap gap-5">
+        <div className="grid md:grid-cols-2 lg:grid-cols-4  row-auto flex-wrap gap-5 gap-y-8">
                 {services.map((service,index)=>(
                     <ServiceCard key={index} title={service.title} description={service.description} value={index + 1}/>
                 ))}

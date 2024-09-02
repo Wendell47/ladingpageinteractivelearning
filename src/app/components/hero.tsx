@@ -1,15 +1,14 @@
 import Image from "next/image"
-import Container from "./container"
-import img from "../assets/heroContentImg.png"
 import Subtitle from "./subtitle"
 import Button from "./button"
+import Section from "./Section"
 
 export default function Hero(){
     return(
-        <div className="h-screen bg-hero-pattern bg-cover py-4 grid place-items-center pt-[4.5rem]">
-                <Container>
-                <div className='flex [&>div]:flex-1 flex-wrap items-center'>
-                   <div className="[&>p]:text-xl "> 
+        <div className="lg:h-screen bg-hero-pattern bg-cover  grid place-items-center pt-[83px]">
+                <Section className="!py-8 max-lg:flex-col-reverse">
+        
+                   <div className="[&>p]:text-xl flex flex-col max-lg:items-center max-lg:*:text-center"> 
                     <Subtitle title="#🌱Sustentabilidade"/>
                     <h1 className="text-h1Clamp leading-none font-bold my-4">Cultivando um <span className="text-green-500 font-bold">Futuro Sustentável</span></h1>
                     <p>Nossa missão é cultivar uma mentalidade sustentável, promovendo ações concretas que visam garantir um futuro melhor para todos. Junte-se a nós nessa jornada e faça parte da mudança!</p>
@@ -20,7 +19,7 @@ export default function Hero(){
                 </div>
                 <div>
                     <Image
-                    src={img}
+                    src={"/img-hero.webp"}
                     width={400}
                     height={400}
                     quality={100}
@@ -28,8 +27,8 @@ export default function Hero(){
                     alt="Desenho grafico de uma pessoa regando plantas"
                     />
                 </div>
-                </div>
-                </Container>
+                
+                </Section>
             </div>
         
     )

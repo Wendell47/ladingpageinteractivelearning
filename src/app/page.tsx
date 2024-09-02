@@ -23,17 +23,17 @@ export default function Home() {
     <main className="text-lg">
       <Hero/>
       <Section>
-        <div><Image src={img1} width={400} height={400}  className="w-full" quality={100} alt="imagem 1"/></div>
+        <div><Image src={"/img2.webp"} width={400} height={400}  className="w-full" quality={100} alt="imagem 1"/></div>
         <div>
           <Subtitle title="🎯 Nosso Proposito"/>
           <Title >Promover a Agroecologia e <span>fortalecer a Agricultura Familiar.</span></Title>
           <p>O propósito da Ecovida é promover a agroecologia e fortalecer a agricultura familiar. Ela conecta grupos e organizações que contestam o modelo de produção agrícola convencional, trabalhando em prol de práticas sustentáveis.</p>
           <p>Através da certificação participativa, apoio técnico e desenvolvimento de logística de comercialização, a Rede Ecovida possibilita que pequenos produtores ofereçam produtos orgânicos no mercado, democratizando o acesso a esses alimentos.</p>
         </div>
-        <ClientLogo />
+        
       </Section>
 
-      
+      <ClientLogo />
 
       <div className="bg-neutral-900">
       <Section className="flex-col items-center">
@@ -43,7 +43,7 @@ export default function Home() {
           <Services/>
       </Section>  
       </div>
-      <Section className="items-center">
+      <Section className="items-center max-lg:flex-col-reverse">
       <div>
           <Subtitle title="😁 Nosso Diferencial"/>
           <Title >Venha Fazer Parte da  <span>Mudança com a Gente.</span></Title>
@@ -52,8 +52,17 @@ export default function Home() {
             {iniciativasAgricolas.map(item => <li key={item} className="flex gap-3 my-4 items-center"> <BadgeCheck size={24} color={colors.green[500]}/> {item}</li>)}
           </ul>
         </div>
-        <div><Image src={"/img2.png"} width={400} height={400}  className="w-full" quality={100} alt="imagem 1"/></div>
+        <div><Image src={"/img1.webp"} width={700} height={700} className="w-full" quality={100} alt="imagem 1"/></div>
       </Section>
+
+      <div>
+        <div className="bg-[url('/bg-2.webp')] bg-black/20 bg-blend-multiply bg-cover bg-center">
+          <Section className="flex-col items-center">
+          <Subtitle title="🪴 Seja Ecologico"/>
+          <Title className="text-white" >Venha Fazer Parte da Mudança com a Gente.</Title>
+        </Section>
+        </div>
+      </div>
     </main>
   );
 }
