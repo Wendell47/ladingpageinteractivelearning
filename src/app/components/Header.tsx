@@ -5,10 +5,11 @@ import Logo from "../assets/logo"
 import Container from "./container"
 import Link from "next/link"
 import Button from "./button"
+import { LucideMenu } from "lucide-react"
 
 export default function Header(){
     const [scrolled,setScrolled]=useState(false)
-
+    const [open,setOpen]= useState(false)
     const Menu = [
        {
          name:"Início",
@@ -50,12 +51,15 @@ export default function Header(){
             <div>
                 <Logo/>
             </div>
-            <nav className="max-md:hidden">
-                <ul className="flex gap-6 [&>li]:text-lg">
+            <nav className="group">
+                <LucideMenu size={24} onClick={() =>setOpen(!open)}/>
+               <div className="z-10 max-md:absolute max-md:inset-0 max-md:top-0 max-md:mt-[83px] max-md:p-4 bg-white"  style={{display:open? "block": "none"}}>
+               <ul className="flex gap-6 items-center [&>li]:text-lg max-md:flex-col ">
                     {
                         Menu.map((item,index) => <li key={index}><Link className="font-bold tracking-widest " href={item.url}>{item.name}</Link></li>)
                     }
                 </ul>
+               </div>
             </nav>
             <Button title={"Contato"}/>
             </div>

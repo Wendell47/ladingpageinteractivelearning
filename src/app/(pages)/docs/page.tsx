@@ -19,7 +19,7 @@ function Code({content}:codeProps){
 
 function BlockText({children}:textBlockProps){
     return(
-        <div>
+        <div className="contents">
             {children}
         </div>
     )

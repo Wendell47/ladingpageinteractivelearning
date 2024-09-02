@@ -10,7 +10,7 @@ export default function Title({children,type="h1",className}:TitleProps){
     const Title = ()=>{
         switch (type) {
             case "h1":
-                return <h1 className={`text-4xl   ${defaultClasses} ${className}`}>{children}</h1> 
+                return <h1 className={`text-h1BodyClamp   ${defaultClasses} ${className}`}>{children}</h1> 
             case "h2":
                 return <h2 className={`text-2xl  ${defaultClasses}  ${className}`}>{children}</h2> 
             case "h3":
