@@ -1,7 +1,7 @@
 import CodeBlock from "@/app/components/CodeBlock";
 import Container from "@/app/components/container";
 import Section from "@/app/components/Section";
-import Subtitle from "@/app/components/subtitle";
+import {Subtitle} from "@/app/components/subtitle";
 import Title from "@/app/components/Title";
 import { ReactNode } from "react";
 

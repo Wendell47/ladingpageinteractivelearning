@@ -1,7 +1,7 @@
 import Image from "next/image"
-import Subtitle from "./subtitle"
 import Button from "./button"
 import Section from "./Section"
+import { Subtitle } from "./subtitle"
 
 export default function Hero(){
     return(
