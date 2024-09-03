@@ -40,7 +40,7 @@ export default function Layout({children}:childrenProp){
         <Container>
             <div className="flex gap-3 max-lg:flex-col">
             <div className="flex-1 flex-grow-[2]">
-                <div className={`fixed top-0 mt-[83px] lg:mt-[11.5rem] max-lg:inset-x-0 px-6 max-lg:border-b border-gray-100  bg-white group ${open ?'open bottom-0': ''}`}>
+                <div className={`fixed top-0 mt-[73px] lg:mt-[11.5rem] max-lg:inset-x-0 px-6 max-lg:border-b border-gray-100  bg-white group ${open ?'open bottom-0': ''}`}>
                 <div className="lg:hidden flex gap-4 items-center cursor-pointer py-2 " onClick={()=>setOpen(!open)}><ChevronDown size={16} color={colors.green[500]} className="group-[.open]:rotate-180"/> Menu</div>
 
                 <ul className="h-full hidden group-[.open]:block lg:block">

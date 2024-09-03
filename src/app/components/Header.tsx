@@ -43,25 +43,28 @@ export default function Header(){
         };
       }, [])
 
+    function CloseMenuDelay(){
+      setTimeout(()=>setOpen(false),200)
+    }
  
     return(
         <header className={`z-10 fixed top-0 inset-x-0 py-4 border-b border-black/5  transition-all ${scrolled && "backdrop-blur-2xl bg-white/90"}`}>
           <Container>
             <div className="flex justify-between items-center">
-            <div>
+            <Link href={'/'}>
                 <Logo/>
-            </div>
+            </Link>
             <nav className="group">
-                <LucideMenu size={24} onClick={() =>setOpen(!open)}/>
-               <div className="z-10 max-md:absolute max-md:inset-0 max-md:top-0 max-md:mt-[83px] max-md:p-4 bg-white"  style={{display:open? "block": "none"}}>
+                <LucideMenu size={24} onClick={() =>setOpen(!open)} className="md:hidden"/>
+               <div className={`z-10 max-md:absolute max-md:inset-0 max-md:top-0 max-md:mt-[73px] max-md:p-4 max-md:bg-white max-md:h-screen ${open ? "max-md:block":"max-md:hidden"} `}>
                <ul className="flex gap-6 items-center [&>li]:text-lg max-md:flex-col ">
                     {
-                        Menu.map((item,index) => <li key={index}><Link className="font-bold tracking-widest " href={item.url}>{item.name}</Link></li>)
+                        Menu.map((item,index) => <li key={index}><Link className="font-bold tracking-widest " href={item.url} onClick={()=>CloseMenuDelay()}>{item.name}</Link></li>)
                     }
                 </ul>
                </div>
             </nav>
-            <Button title={"Contato"}/>
+            <Button title={"Contato"} className="max-md:hidden"/>
             </div>
           </Container>
         </header>
