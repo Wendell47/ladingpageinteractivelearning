@@ -1,4 +1,4 @@
-import { title } from "process"
+
 import { DOMAttributes, forwardRef } from "react"
 
 type props = DOMAttributes<HTMLSpanElement> & {
@@ -7,8 +7,8 @@ type props = DOMAttributes<HTMLSpanElement> & {
     type?: "light" | "dark"
     
 }
-export const Subtitle = forwardRef<HTMLSpanElement,props>(({title,className, type="light",...rest},ref)=>{
-    
+ const Subtitle = forwardRef<HTMLSpanElement,props>(({title,className, type="light",...rest},ref)=>{
+
     const bgColorTheme = ()=>{
         if(type=="light"){ return "bg-green-500/10"}
         else if(type=="dark"){ return "text-white bg-white/50"}
@@ -18,3 +18,6 @@ export const Subtitle = forwardRef<HTMLSpanElement,props>(({title,className, typ
         </span>
     )
 })
+Subtitle.displayName = "Subtitle"
+
+export {Subtitle}
