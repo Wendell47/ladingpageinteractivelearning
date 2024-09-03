@@ -25,7 +25,7 @@ export default function Home() {
       <Section>
         <div><Image src={"/img2.webp"} width={400} height={400}  className="w-full" quality={100} alt="imagem 1"/></div>
         <div>
-          <Subtitle title="🎯 Nosso Proposito"/>
+          <Subtitle title="🎯 Nosso Proposito" type="light"/>
           <Title >Promover a Agroecologia e <span>fortalecer a Agricultura Familiar.</span></Title>
           <p>O propósito da Ecovida é promover a agroecologia e fortalecer a agricultura familiar. Ela conecta grupos e organizações que contestam o modelo de produção agrícola convencional, trabalhando em prol de práticas sustentáveis.</p>
           <p>Através da certificação participativa, apoio técnico e desenvolvimento de logística de comercialização, a Rede Ecovida possibilita que pequenos produtores ofereçam produtos orgânicos no mercado, democratizando o acesso a esses alimentos.</p>
@@ -38,7 +38,7 @@ export default function Home() {
       <div className="bg-neutral-900">
       <Section className="flex-col items-center">
 
-        <div className="flex flex-col items-center"><Subtitle title={"🚀O que nós fazemos!"}/>
+        <div className="flex flex-col items-center"><Subtitle title={"🚀O que nós fazemos!"} type="dark"/>
         <Title className="text-white max-w-2xl text-center">Em Nossa Rede de Apoio Ofereçemos os Seguintes Serviços</Title></div>
           <Services/>
       </Section>  
@@ -56,9 +56,9 @@ export default function Home() {
       </Section>
 
       <div>
-        <div className="bg-[url('/bg-2.webp')] bg-black/20 bg-blend-multiply bg-cover bg-center">
+        <div className="bg-[url('/bg-2.webp')] bg-black/4 0 bg-blend-multiply bg-cover bg-center">
           <Section className="flex-col items-center">
-          <Subtitle title="🪴 Seja Ecologico"/>
+          <Subtitle title="🪴 Seja Ecologico" type="dark"/>
           <Title className="text-white" >Venha Fazer Parte da Mudança com a Gente.</Title>
         </Section>
         </div>
