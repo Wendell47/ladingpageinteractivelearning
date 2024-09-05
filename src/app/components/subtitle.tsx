@@ -1,7 +1,7 @@
 
-import { DOMAttributes, forwardRef } from "react"
+import { DOMAttributes, forwardRef, HTMLAttributes } from "react"
 
-type props = DOMAttributes<HTMLSpanElement> & {
+type props = DOMAttributes<HTMLSpanElement> & HTMLAttributes<HTMLSpanElement> & {
     title:String
     className?:string
     type?: "light" | "dark"
@@ -13,9 +13,9 @@ type props = DOMAttributes<HTMLSpanElement> & {
         if(type=="light"){ return "bg-green-500/10"}
         else if(type=="dark"){ return "text-white bg-white/50"}
     }
-    
+
     return(
-        <span className={`p-1 rounded-lg px-4 inline-flex text-green-500 uppercase font-bold tracking-widest ${bgColorTheme()} ${className} `} {...rest} ref={ref}>{title}
+        <span className={`p-1 rounded-lg px-4 inline-flex text-green-500 uppercase font-bold tracking-widest ${bgColorTheme()} ${className} `}   {...rest} ref={ref}>{title}
         </span>
     )
 })

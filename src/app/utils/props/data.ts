@@ -8,11 +8,11 @@ export const ClientLogos = [
         url:"/logos/client2.png"
     },
     {
-        name:"logo2",
+        name:"logo3",
         url:"/logos/client3.png"
     },
     {
-        name:"logo3",
+        name:"logo4",
         url:"/logos/client4.png"
     },
 
