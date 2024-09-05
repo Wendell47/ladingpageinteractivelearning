@@ -51,7 +51,7 @@ export default function Modal({elementId,codeType = "css", codeTitle,open,...res
     return(
         <div className={`absolute inset-0   flex max-md:justify-center group min-w-full pointer-events-none ${open ? "active":""}`} {...rest}>
             <div className="max-w-[-webkit-fill-available] " >
-            <div className={`flex flex-col bottom-0 mb-4  opacity-0 pointer-events-none group-[.active]:opacity-100 group-[.active]:pointer-events-auto transition-opacity max-md:!ml-0  max-md:px-4`} style={{marginTop:position.top,marginLeft:position.left,transform:`translate(0px,-100%)`}}>
+            <div className={`flex flex-col max-md:items-center bottom-0 mb-4  opacity-0 pointer-events-none group-[.active]:opacity-100 group-[.active]:pointer-events-auto transition-opacity max-md:!ml-0  max-md:px-4`} style={{marginTop:position.top,marginLeft:position.left,transform:`translate(0px,-100%)`}}>
             <CodeBlock  title={codeTitle} code={cssText} language={codeType} className={"shadow-lg shadow-black/5"}/>
             <div className={`bg-green-300/20 `} style={dimension}></div>
             </div>
