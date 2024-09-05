@@ -2,8 +2,6 @@
 import Image from "next/image";
 import Hero from "./components/hero";
 import Section from "./components/Section";
-
-import img1 from "./assets/img1.png"
 import {Subtitle} from "./components/subtitle";
 import Title from "./components/Title";
 import ClientLogo from "./components/clients";
@@ -19,7 +17,7 @@ import Form from "./components/form";
 export default function Home() {
   const [cssText, setCssText] = useState('')
   const [open, setOpen] = useState(false)
-  const [position, setPosition] = useState({top:0,left:0})
+  const [elementId, setElementId] = useState<EventTarget & Element>()
   const elementRef = useRef<HTMLElement>(null)
 
 
@@ -31,39 +29,28 @@ export default function Home() {
     "Fortalecimento da Agricultura Familiar"
   ]
   
-  type props = stylesProps & {
+  type props = {
     event:React.MouseEvent
     
   }
 
-  const handleMouseEnter = ({event,stylesName}:props) => {
-    const element = event.currentTarget
-    const styles = window.getComputedStyle(element)
-    const position =  elementRef.current
-    
-    setPosition({top:position!.offsetTop,left:position!.offsetLeft})
 
-    const appliedStyles = appliedStylesContent
-    
-    let cssString = '';
-    
-    appliedStyles?.Subtitle.forEach(property => {
-      cssString += `${property}: ${styles.getPropertyValue(property)};\n`;
-    });
+  const handleMouseEnter = ({event}:props) => {
+    setElementId(event.currentTarget)
 
-    setCssText(cssString);
+   
     setOpen(true)
   };
 
   return (
-    <main className="text-lg ">
-      <Modal codeTitle="styles.css" cssText={cssText} open={open} position={position} onMouseLeave={()=>setOpen(false)}/>
+    <main className="text-lg" >
+      {elementId && <Modal codeTitle="styles.css" open={open} elementId={elementId} onMouseLeave={()=>setOpen(false)}/>}
       <Hero/>
       <Section>
         <div><Image src={"/img2.webp"} width={400} height={400}  className="w-full" quality={100} alt="imagem 1"/></div>
         <div>
-          <Subtitle ref={elementRef} title="🎯 Nosso Proposito" type="light" onMouseEnter={(e)=>handleMouseEnter({event:e, stylesName:"Subtitle"})} />
-          <Title >Promover a Agroecologia e <span>fortalecer a Agricultura Familiar.</span></Title>
+          <Subtitle id="subtitle1" ref={elementRef} title="🎯Nosso Proposito" type="light" onMouseEnter={(e)=>handleMouseEnter({event:e})} />
+          <Title>Promover a Agroecologia e <span>fortalecer a Agricultura Familiar.</span></Title>
           <p>O propósito da Ecovida é promover a agroecologia e fortalecer a agricultura familiar. Ela conecta grupos e organizações que contestam o modelo de produção agrícola convencional, trabalhando em prol de práticas sustentáveis.</p>
           <p>Através da certificação participativa, apoio técnico e desenvolvimento de logística de comercialização, a Rede Ecovida possibilita que pequenos produtores ofereçam produtos orgânicos no mercado, democratizando o acesso a esses alimentos.</p>
         </div>
@@ -76,7 +63,7 @@ export default function Home() {
       <Section className="flex-col items-center">
 
         <div className="flex flex-col items-center">
-          <Subtitle title={"🚀O que nós fazemos!"} type="dark"  ref={elementRef} onMouseEnter={(e)=>handleMouseEnter({event:e, stylesName:"Subtitle"})}/>
+          <Subtitle id="subtitle2" title={"🚀O que nós fazemos!"} type="dark"  ref={elementRef} onMouseEnter={(e)=>handleMouseEnter({event:e})}/>
         <Title className="text-white max-w-2xl text-center">Em Nossa Rede de Apoio Ofereçemos os Seguintes Serviços</Title></div>
           <Services/>
       </Section>  
@@ -84,7 +71,7 @@ export default function Home() {
 
       <Section className="items-center max-lg:flex-col-reverse">
       <div>
-          <Subtitle title="😁 Nosso Diferencial"/>
+          <Subtitle id="subtitle3" title="😁 Nosso Diferencial" onMouseEnter={(e)=>handleMouseEnter({event:e})}/>
           <Title >Venha Fazer Parte da  <span>Mudança com a Gente.</span></Title>
           <p>No nosso time, você pode contar com nosso apoio em cada passo do caminho. Nossos diferenciais incluem:</p>
           <ul>
@@ -97,7 +84,7 @@ export default function Home() {
       <div>
         <div className="bg-[url('/bg-2.webp')] bg-black/40 bg-blend-multiply bg-cover bg-center">
           <Section className="flex-col items-center">
-          <Subtitle title="🪴 Seja Ecologico" type="dark"/>
+          <Subtitle id="subtitle4" onMouseEnter={(e)=>handleMouseEnter({event:e})} title="🪴 Seja Ecologico" type="dark"/>
           <Title className="text-white" >Venha Fazer Parte da Mudança com a Gente.</Title>
         </Section>
         </div>
@@ -107,7 +94,7 @@ export default function Home() {
       <Section className="flex-col items-center">
 
         <div className="flex flex-col items-center">
-          <Subtitle title={"🚀Nós respondemos em até 24h"} type="light"  ref={elementRef} onMouseEnter={(e)=>handleMouseEnter({event:e, stylesName:"Subtitle"})}/>
+          <Subtitle id="subtitle5"title={"🚀Nós respondemos em até 24h"} type="light"  ref={elementRef} onMouseEnter={(e)=>handleMouseEnter({event:e})}/>
         <Title className="max-w-2xl text-center">Contato</Title></div>
         <p>Preencha os dados abaixo e entraremos em contato o mais breve possivel!</p>
           <Form/>
