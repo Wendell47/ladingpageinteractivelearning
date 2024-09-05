@@ -6,9 +6,9 @@ import Container from "./container";
 export default function Footer(){
 
     const icons = [
-        <Instagram/>,
-        <Facebook/>,
-        <Linkedin/>
+        <Instagram key={1}/>,
+        <Facebook key={2}/>,
+        <Linkedin key={3}/>
     ]
 
     return(
