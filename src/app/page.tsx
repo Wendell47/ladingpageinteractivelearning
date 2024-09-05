@@ -13,6 +13,8 @@ import colors from "tailwindcss/colors";
 import { useRef, useState } from "react";
 import Modal from "./components/modal";
 import { appliedStylesContent } from "./utils/cssLayout";
+import { stylesProps } from "./utils/props/props";
+import Form from "./components/form";
 
 export default function Home() {
   const [cssText, setCssText] = useState('')
@@ -29,22 +31,23 @@ export default function Home() {
     "Fortalecimento da Agricultura Familiar"
   ]
   
-  type props = {
+  type props = stylesProps & {
     event:React.MouseEvent
+    
   }
 
-  const handleMouseEnter = ({event}:props) => {
+  const handleMouseEnter = ({event,stylesName}:props) => {
     const element = event.currentTarget
     const styles = window.getComputedStyle(element)
     const position =  elementRef.current
     
     setPosition({top:position!.offsetTop,left:position!.offsetLeft})
 
-    let appliedStyles = appliedStylesContent
-
+    const appliedStyles = appliedStylesContent
+    
     let cssString = '';
     
-    appliedStyles.Subtitle.forEach(property => {
+    appliedStyles?.Subtitle.forEach(property => {
       cssString += `${property}: ${styles.getPropertyValue(property)};\n`;
     });
 
@@ -53,13 +56,13 @@ export default function Home() {
   };
 
   return (
-    <main className="text-lg">
+    <main className="text-lg ">
       <Modal codeTitle="styles.css" cssText={cssText} open={open} position={position} onMouseLeave={()=>setOpen(false)}/>
       <Hero/>
       <Section>
         <div><Image src={"/img2.webp"} width={400} height={400}  className="w-full" quality={100} alt="imagem 1"/></div>
         <div>
-          <Subtitle ref={elementRef} title="🎯 Nosso Proposito" type="light" onMouseEnter={(e)=>handleMouseEnter({event:e})} />
+          <Subtitle ref={elementRef} title="🎯 Nosso Proposito" type="light" onMouseEnter={(e)=>handleMouseEnter({event:e, stylesName:"Subtitle"})} />
           <Title >Promover a Agroecologia e <span>fortalecer a Agricultura Familiar.</span></Title>
           <p>O propósito da Ecovida é promover a agroecologia e fortalecer a agricultura familiar. Ela conecta grupos e organizações que contestam o modelo de produção agrícola convencional, trabalhando em prol de práticas sustentáveis.</p>
           <p>Através da certificação participativa, apoio técnico e desenvolvimento de logística de comercialização, a Rede Ecovida possibilita que pequenos produtores ofereçam produtos orgânicos no mercado, democratizando o acesso a esses alimentos.</p>
@@ -72,11 +75,13 @@ export default function Home() {
       <div className="bg-neutral-900">
       <Section className="flex-col items-center">
 
-        <div className="flex flex-col items-center"><Subtitle title={"🚀O que nós fazemos!"} type="dark"/>
+        <div className="flex flex-col items-center">
+          <Subtitle title={"🚀O que nós fazemos!"} type="dark"  ref={elementRef} onMouseEnter={(e)=>handleMouseEnter({event:e, stylesName:"Subtitle"})}/>
         <Title className="text-white max-w-2xl text-center">Em Nossa Rede de Apoio Ofereçemos os Seguintes Serviços</Title></div>
           <Services/>
       </Section>  
       </div>
+
       <Section className="items-center max-lg:flex-col-reverse">
       <div>
           <Subtitle title="😁 Nosso Diferencial"/>
@@ -96,6 +101,17 @@ export default function Home() {
           <Title className="text-white" >Venha Fazer Parte da Mudança com a Gente.</Title>
         </Section>
         </div>
+      </div>
+
+      <div className="bg-gray-50">
+      <Section className="flex-col items-center">
+
+        <div className="flex flex-col items-center">
+          <Subtitle title={"🚀Nós respondemos em até 24h"} type="light"  ref={elementRef} onMouseEnter={(e)=>handleMouseEnter({event:e, stylesName:"Subtitle"})}/>
+        <Title className="max-w-2xl text-center">Contato</Title></div>
+        <p>Preencha os dados abaixo e entraremos em contato o mais breve possivel!</p>
+          <Form/>
+      </Section>  
       </div>
     </main>
   );

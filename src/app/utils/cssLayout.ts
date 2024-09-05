@@ -1,8 +1,11 @@
+import { stylesProps } from "./props/props"
 
-const Subtitle = ['color', 'background-color', 'font-size', 'font-weight', 'padding', "border-radius"]
+
 
 const  appliedStylesContent = {
-    Subtitle
+    
+    Subtitle:['color', 'background-color', 'font-size', 'font-weight', 'padding', "border-radius"],
+    Title:['color', 'background-color', 'font-size', 'font-weight', 'padding', "border-radius"]
 }
 
    

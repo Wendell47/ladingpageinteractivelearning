@@ -3,6 +3,7 @@ import { Quicksand } from "next/font/google";
 import "./globals.css";
 import Header from "./components/Header";
 import { SpeedInsights } from "@vercel/speed-insights/next"
+import Footer from "./components/footer";
 
 const inter = Quicksand({ subsets: ["latin"] });
 
@@ -21,6 +22,7 @@ export default function RootLayout({
       <body className={inter.className}>
       <Header/>
         {children}
+        <Footer/>
         <SpeedInsights/>
       </body>
       

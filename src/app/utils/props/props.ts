@@ -7,3 +7,7 @@ export type props ={
 export type childrenProp={
     children:ReactNode
 }
+
+export type stylesProps ={
+    stylesName:"Subtitle" | "Title" | ""
+}
