@@ -15,9 +15,10 @@ type Props = {
   }
  const Subtitle = forwardRef<HTMLSpanElement,props>(({title,className, type="light",...rest},ref)=>{
 
-    const {element,open,setElement,setOpen}=useModalElementStore()
+    const {setElement,setOpen,setPositionOnElement}=useModalElementStore()
 
     function handleElement({event}:Props){
+        event.id === "heroSubtitle" ? setPositionOnElement("bottom"): setPositionOnElement("up")
         setElement(event)
         setOpen(true)
 
