@@ -1,32 +1,32 @@
 import { forwardRef, HTMLAttributes, useEffect, useState } from "react"
 import CodeBlock from "./CodeBlock"
 import { appliedStylesContent } from "../utils/cssLayout"
+import { useModalElementStore } from "../utils/hooks/stores"
 
-type props = HTMLAttributes<HTMLDivElement>  &{
-    elementId:EventTarget & Element
+type props = HTMLAttributes<HTMLDivElement> &{
     codeTitle?:string
     codeType?:string
-    open:boolean
+    
 }
 type positionProps={top:number,left:number}
 type dimensionProps={width:number,height:number,marginBottom:number | string}
 
-export default function Modal({elementId,codeType = "css", codeTitle,open,...rest}:props){
-
+export default function Modal({codeType = "css", codeTitle,...rest}:props){
+    const {open,element} = useModalElementStore()
     const[position,setPosition]=useState<positionProps>({left:0,top:0})
     const[dimension,setDimension]=useState<dimensionProps>({width:0,height:0,marginBottom:0})
-    const[percent,setPercent]=useState(0)
     const [cssText, setCssText] = useState('')
    
     
     useEffect(()=>{
-        if(elementId.id){
-            const element= document.getElementById(elementId.id)
-        setPosition({left:element!.offsetLeft,top:element!.offsetTop})
-        setDimension({width:element!.offsetWidth,height:element!.offsetHeight,marginBottom:`-${element!.offsetHeight}px`})
-        setPercent(100-((dimension.height/100)*100))
+        if(element && element.id){
+            const Element= document.getElementById(element!.id)
+
+        setPosition({left:Element!.offsetLeft,top:Element!.offsetTop})
+        setDimension({width:Element!.offsetWidth,height:Element!.offsetHeight,marginBottom:`-${Element!.offsetHeight}px`})
+       
         
-        const styles = window.getComputedStyle(elementId)
+        const styles = window.getComputedStyle(element)
 
         const appliedStyles = appliedStylesContent
         
@@ -37,8 +37,6 @@ export default function Modal({elementId,codeType = "css", codeTitle,open,...res
         });
 
         setCssText(cssString);
-
-       
         
         }
 

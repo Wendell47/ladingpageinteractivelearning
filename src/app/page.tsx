@@ -13,14 +13,14 @@ import Modal from "./components/modal";
 import { appliedStylesContent } from "./utils/cssLayout";
 import { stylesProps } from "./utils/props/props";
 import Form from "./components/form";
+import { useModalElementStore } from "./utils/hooks/stores";
 
 export default function Home() {
   const [cssText, setCssText] = useState('')
-  const [open, setOpen] = useState(false)
   const [elementId, setElementId] = useState<EventTarget & Element>()
   const elementRef = useRef<HTMLElement>(null)
 
-
+ const {element,setOpen,setElement} = useModalElementStore()
 
   const iniciativasAgricolas = [
     "Apoio Técnico e Capacitação",
@@ -36,15 +36,13 @@ export default function Home() {
 
 
   const handleMouseEnter = ({event}:props) => {
-    setElementId(event.currentTarget)
-
-   
+    setElement(event.currentTarget)   
     setOpen(true)
-  };
+  }
 
   return (
     <main className="text-lg" >
-      {elementId && <Modal codeTitle="styles.css" open={open} elementId={elementId} onMouseLeave={()=>setOpen(false)}/>}
+      {element && <Modal codeTitle="styles.css"   onMouseLeave={()=>setOpen(false)}/>}
       <Hero/>
       <Section>
         <div><Image src={"/img2.webp"} width={400} height={400}  className="w-full" quality={100} alt="imagem 1"/></div>
