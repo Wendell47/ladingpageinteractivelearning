@@ -8,19 +8,17 @@ import ClientLogo from "./components/clients";
 import Services from "./components/Services";
 import { BadgeCheck } from "lucide-react";
 import colors from "tailwindcss/colors";
-import { useRef, useState } from "react";
+import { useRef } from "react";
 import Modal from "./components/modal";
-import { appliedStylesContent } from "./utils/cssLayout";
-import { stylesProps } from "./utils/props/props";
+
 import Form from "./components/form";
 import { useModalElementStore } from "./utils/hooks/stores";
 
 export default function Home() {
-  const [cssText, setCssText] = useState('')
-  const [elementId, setElementId] = useState<EventTarget & Element>()
+
   const elementRef = useRef<HTMLElement>(null)
 
- const {element,setOpen,setElement} = useModalElementStore()
+ const {element,setOpen,setElement,setPositionOnElement} = useModalElementStore()
 
   const iniciativasAgricolas = [
     "Apoio Técnico e Capacitação",
@@ -36,13 +34,14 @@ export default function Home() {
 
 
   const handleMouseEnter = ({event}:props) => {
+    setPositionOnElement("up")
     setElement(event.currentTarget)   
     setOpen(true)
   }
 
   return (
     <main className="text-lg" >
-      {element && <Modal codeTitle="styles.css"   onMouseLeave={()=>setOpen(false)}/>}
+      {element && <Modal codeTitle="styles.css"  onMouseLeave={()=>setOpen(false)} />}
       <Hero/>
       <Section>
         <div><Image src={"/img2.webp"} width={400} height={400}  className="w-full" quality={100} alt="imagem 1"/></div>
