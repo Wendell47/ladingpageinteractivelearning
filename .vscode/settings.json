@@ -1,0 +1,5 @@
+{
+	"cSpell.words": ["zustand"],
+	"editor.formatOnSave": true,
+	"editor.defaultFormatter": "biomejs.biome"
+}

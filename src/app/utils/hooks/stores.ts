@@ -1,25 +1,24 @@
-import { create } from "zustand"
+import { create } from "zustand";
 
-type positionOnElement = "up" | "bottom"
+export type positionOnElement = "up" | "bottom" | "left" | "right";
 
 type modalStoreProps = {
-    element:EventTarget & Element | null
-    open:boolean
-    modalPositionOnElement:positionOnElement
-    setElement:(element:EventTarget & Element) => void
-    setOpen:(open:boolean)=> void
-    setPositionOnElement:(position:positionOnElement)=> void
-}
+	element: (EventTarget & Element) | null;
+	open: boolean;
+	modalPositionOnElement: positionOnElement;
+	setElement: (element: (EventTarget & Element) | null) => void;
+	setOpen: (open: boolean) => void;
+	setPositionOnElement: (position: positionOnElement) => void;
+};
 
-const useModalElementStore = create<modalStoreProps>((set)=>(
-    {
-        element: null,
-        open:false,
-        modalPositionOnElement:"up",
-        setElement:(element) => set({element:element}),
-        setOpen:(open)=> set ({open:open}),
-        setPositionOnElement:(positionOnElement) => set({modalPositionOnElement:positionOnElement})
-    }
-))
+const useModalElementStore = create<modalStoreProps>((set) => ({
+	element: null,
+	open: false,
+	modalPositionOnElement: "up",
+	setElement: (element) => set({ element: element }),
+	setOpen: (open) => set({ open: open }),
+	setPositionOnElement: (positionOnElement) =>
+		set({ modalPositionOnElement: positionOnElement }),
+}));
 
-export{useModalElementStore}
+export { useModalElementStore };

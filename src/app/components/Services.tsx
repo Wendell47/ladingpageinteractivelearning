@@ -5,7 +5,7 @@ import colors  from 'tailwindcss/colors';
 
 
 type serviceCardProps = {
-    title:String
+    title:string
     description:string
     value:number
 }
@@ -39,7 +39,7 @@ export default function Services(){
     return(
         <div className="grid md:grid-cols-2 lg:grid-cols-4  row-auto flex-wrap gap-5 gap-y-8">
                 {services.map((service,index)=>(
-                    <ServiceCard key={index} title={service.title} description={service.description} value={index + 1}/>
+                    <ServiceCard key={service.title} title={service.title} description={service.description} value={index + 1}/>
                 ))}
         </div>
     )

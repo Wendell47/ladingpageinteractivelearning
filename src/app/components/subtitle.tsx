@@ -1,38 +1,44 @@
-"use client"
-import { DOMAttributes, forwardRef, HTMLAttributes } from "react"
-import { useModalElementStore } from "../utils/hooks/stores"
+"use client";
+import { type DOMAttributes, forwardRef, type HTMLAttributes } from "react";
+import { useHandleElement } from "../utils/hooks/functions";
 
-type props = DOMAttributes<HTMLSpanElement> & HTMLAttributes<HTMLSpanElement> & {
-    title:String
-    className?:string
-    type?: "light" | "dark"
-    
-}
+type props = DOMAttributes<HTMLSpanElement> &
+	HTMLAttributes<HTMLSpanElement> & {
+		title: string;
+		className?: string;
+		type?: "light" | "dark";
+	};
 
-type Props = {
-    event:EventTarget & Element
-    
-  }
- const Subtitle = forwardRef<HTMLSpanElement,props>(({title,className, type="light",...rest},ref)=>{
+export type eventProps = {
+	event: EventTarget & Element;
+};
+const Subtitle = forwardRef<HTMLSpanElement, props>(
+	({ title, className, type = "light", ...rest }, ref) => {
+		const handleElement = useHandleElement();
 
-    const {setElement,setOpen,setPositionOnElement}=useModalElementStore()
+		const bgColorTheme = () => {
+			if (type === "light") {
+				return "bg-green-500/10";
+			}
+			if (type === "dark") {
+				return "text-white bg-white/50";
+			}
+		};
 
-    function handleElement({event}:Props){
-        event.id === "heroSubtitle" ? setPositionOnElement("bottom"): setPositionOnElement("up")
-        setElement(event)
-        setOpen(true)
+		return (
+			<span
+				className={`p-1 rounded-lg px-4 inline-flex text-green-500 uppercase font-bold tracking-widest ${bgColorTheme()} ${className} `}
+				onMouseEnter={(e) =>
+					handleElement({ event: e.currentTarget, modalPosition: "up" })
+				}
+				ref={ref}
+				{...rest}
+			>
+				{title}
+			</span>
+		);
+	},
+);
+Subtitle.displayName = "Subtitle";
 
-    }
-    const bgColorTheme = ()=>{
-        if(type=="light"){ return "bg-green-500/10"}
-        else if(type=="dark"){ return "text-white bg-white/50"}
-    }
-
-    return(
-        <span className={`p-1 rounded-lg px-4 inline-flex text-green-500 uppercase font-bold tracking-widest ${bgColorTheme()} ${className} `} onMouseEnter={(e)=>handleElement({event:e.currentTarget})}  ref={ref} {...rest}>{title}
-        </span>
-    )
-})
-Subtitle.displayName = "Subtitle"
-
-export {Subtitle}
+export { Subtitle };
